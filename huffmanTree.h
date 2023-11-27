@@ -38,3 +38,5 @@ void ler_tabela_do_arquivo(FILE *arquivo_comprimido, CodigoBinario **tabela);
 void descomprimir_dados(FILE *arquivo_comprimido, FILE *arquivo_descomprimido, No *arvore);
 void comprimir_arquivo(char *nome_arquivo_original, char *nome_arquivo_comprimido, CodigoBinario **tabela);
 void descomprimir_arquivo(char *nome_arquivo_comprimido, char *nome_arquivo_descomprimido, No *arvore, CodigoBinario **tabela);
+char binarioParaAscii(char *binario);
+void processarArquivoBinario(const char *entrada, const char *saida);

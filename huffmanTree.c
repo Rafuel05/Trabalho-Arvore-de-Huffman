@@ -6,6 +6,40 @@
 #include <limits.h>
 #include "huffmanTree.h"
 
+char binarioParaAscii(char *binario) {
+    int valor = 0;
+    for (int i = 7; i >= 0; i--) {
+        valor |= (binario[7 - i] - '0') << i;
+    }
+    return (char)valor;
+}
+
+void processarArquivoBinario(const char *entrada, const char *saida) {
+    FILE *arquivoEntrada = fopen(entrada, "rb");
+    FILE *arquivoSaida = fopen(saida, "w");
+
+    if (arquivoEntrada == NULL || arquivoSaida == NULL) {
+        perror("Erro ao abrir os arquivos");
+        return;
+    }
+
+    char conjuntoBits[9];  // 8 bits + caractere nulo
+    size_t lidos;
+
+    while ((lidos = fread(conjuntoBits, 1, 8, arquivoEntrada)) > 0) {
+        conjuntoBits[lidos] = '\0';
+
+        // Convertendo os bits para um caractere ASCII
+        char caractere = binarioParaAscii(conjuntoBits);
+
+        // Escrevendo o caractere no arquivo de saída
+        fprintf(arquivoSaida, "%c", caractere);
+    }
+
+    fclose(arquivoEntrada);
+    fclose(arquivoSaida);
+}
+
 // Função para inicializar a tabela de frequência com zero
 void inicializa_tabela_com_zero(unsigned int tab[]) {
     int i;
