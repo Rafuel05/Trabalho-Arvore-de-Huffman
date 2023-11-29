@@ -39,9 +39,8 @@ void main () {
     printf("\nComprimindo...\n");
     comprimir_arquivo("teste.txt", "arquivo_comprimido.bin", tabela_codigos);
     printf("Arquivo comprimido com sucesso.\n");
-    // Descomprimir
-    printf("\nDescomprimindo...\n");
-    processarArquivoBinario("arquivo_comprimido.bin", "arquivo_descomprimido.txt");
-    printf("Arquivo descomprimido com sucesso.\n");
+    //substitui de acordo com a tabela ascii
+    processarArquivoBinario("arquivo_comprimido.bin", "arquivo_comprimido_1.txt");
+
 
 }
